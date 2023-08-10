@@ -14,7 +14,7 @@ public:
 	void onSizeChanged() override;
 
 	bool input(InputConfig* config, Input input) override;
-	void update(int deltaTime) override;
+	void update(int deltaTime);
 	virtual std::vector<HelpPrompt> getHelpPrompts() override;
 
 private:

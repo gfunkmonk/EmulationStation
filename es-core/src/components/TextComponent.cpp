@@ -120,9 +120,6 @@ void TextComponent::render(const Transform4x4f& parentTrans)
 			case ALIGN_CENTER:
 				yOff = (getSize().y() - textSize.y()) / 2.0f;
 				break;
-			default:
-				LOG(LogError) << "Unknown vertical alignment: " << mVerticalAlignment;
-				break;
 		}
 		Vector3f off(0, yOff, 0);
 
@@ -149,9 +146,6 @@ void TextComponent::render(const Transform4x4f& parentTrans)
 				break;
 			case ALIGN_RIGHT:
 				Renderer::drawRect(mSize.x() - mTextCache->metrics.size.x(), 0.0f, mTextCache->metrics.size.x(), mTextCache->metrics.size.y(), 0x00000033, 0x00000033);
-				break;
-			default:
-				LOG(LogError) << "Unknown horizontal alignment: " << mHorizontalAlignment;
 				break;
 			}
 		}

@@ -40,23 +40,23 @@ public:
 	// If both are non-zero, potentially break the aspect ratio.  If both are zero, no resizing.
 	// Can be set before or after a video is loaded.
 	// setMaxSize() and setResize() are mutually exclusive.
-	void setResize(float width, float height) override;
+	void setResize(float width, float height);
 
 	// Resize the video to be as large as possible but fit within a box of this size.
 	// Can be set before or after a video is loaded.
 	// Never breaks the aspect ratio. setMaxSize() and setResize() are mutually exclusive.
-	void setMaxSize(float width, float height) override;
+	void setMaxSize(float width, float height);
 
 private:
 	// Calculates the correct mSize from our resizing information (set by setResize/setMaxSize).
 	// Used internally whenever the resizing parameters or texture change.
 	void resize();
 	// Start the video Immediately
-	virtual void startVideo() override;
+	virtual void startVideo();
 	// Stop the video
-	virtual void stopVideo() override;
+	virtual void stopVideo();
 	// Handle looping the video. Must be called periodically
-	virtual void handleLooping() override;
+	virtual void handleLooping();
 
 	void setupContext();
 	void freeContext();
