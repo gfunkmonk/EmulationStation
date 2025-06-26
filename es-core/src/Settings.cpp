@@ -78,6 +78,7 @@ void Settings::setDefaults()
 	mBoolMap["HideConsole"] = true;
 	mBoolMap["QuickSystemSelect"] = true;
 	mBoolMap["MoveCarousel"] = true;
+	mBoolMap["OSK_Enable"] = true;
 
 	mBoolMap["ThreadedLoading"] = false;
 
@@ -103,6 +104,7 @@ void Settings::setDefaults()
 	mStringMap["Scraper"] = "TheGamesDB";
 	mStringMap["GamelistViewStyle"] = "automatic";
 	mStringMap["SaveGamelistsMode"] = "on exit";
+	mBoolMap["OSK_Enable"] = true;
 
 	mBoolMap["ScreenSaverControls"] = true;
 	mStringMap["ScreenSaverGameInfo"] = "never";

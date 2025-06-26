@@ -5,6 +5,8 @@
 #include "utils/StringUtil.h"
 #include "PowerSaver.h"
 #include "Settings.h"
+#include "Log.h"
+#include "AudioManager.h"
 #ifdef WIN32
 #include <basetsd.h>
 #include <codecvt>
@@ -194,6 +196,7 @@ void VideoVlcComponent::freeContext()
 
 void VideoVlcComponent::setupVLC(std::string subtitles)
 {
+	LOG(LogError) << "Initting VLC.";
 	// If VLC hasn't been initialised yet then do it now
 	if (!mVLC)
 	{
@@ -233,6 +236,17 @@ void VideoVlcComponent::handleLooping()
 
 void VideoVlcComponent::startVideo()
 {
+	// there are occasions where the SDL Audio device gets hung up in a PAUSED state and the video will be played without sound
+	if (SDL_GetAudioStatus() == SDL_AUDIO_PAUSED) {
+		// This means that ES is holding on to the SDL device and VLC won't let it use it
+		LOG(LogError) << "SDL Audio Paused. Re-initting.";
+		SDL_CloseAudio();
+ 		//AudioManager::getInstance()->deinit();
+ 		AudioManager::getInstance()->init();
+ 		SDL_PauseAudio(0);
+ 		LOG(LogError) << "SDL Audio Paused. Finished initting.";
+ 	}
+
 	if (!mIsPlaying) {
 		mVideoWidth = 0;
 		mVideoHeight = 0;

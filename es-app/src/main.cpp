@@ -10,6 +10,7 @@
 #include "EmulationStation.h"
 #include "InputManager.h"
 #include "Log.h"
+#include "AudioManager.h"
 #include "MameNames.h"
 #include "platform.h"
 #include "PowerSaver.h"
@@ -422,6 +423,8 @@ int main(int argc, char* argv[])
 	int lastTime = SDL_GetTicks();
 	int ps_time = SDL_GetTicks();
 
+	//AudioManager::getInstance()->init();
+
 	bool running = true;
 
 	while(running)
@@ -480,6 +483,7 @@ int main(int argc, char* argv[])
 		delete window.peekGui();
 
 	InputManager::getInstance()->deinit();
+	//AudioManager::getInstance()->deinit();
 	window.deinit();
 
 	MameNames::deinit();
